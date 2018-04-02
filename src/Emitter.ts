@@ -341,23 +341,23 @@ export default class Emitter {
 
                         // search for member in class
                         for (let x = 0; x < obj.members.length; ++x) {
-                            const mem = obj.members[x];
+                            const mem = <dom.ClassMember> obj.members[x];
 
                             if (mem.kind === 'constructor') {
                                 continue;
                             }
 
-                            if ((obj.members[x] as dom.ObjectTypeMember).name === implMember.name) {
-                                clsMember = obj.members[x];
-                                break;
-                            }
+                            // if (mem.name === implMember.name) {
+                            //     clsMember = obj.members[x];
+                            //     break;
+                            // }
                         }
 
                         implMember.kind = 'method';
 
                         // if class doesn't contain a member of the same type, then add it
                         if (!objEqual(clsMember, implMember)) {
-                            obj.members.push(implMember);
+                            //obj.members.push(implMember);
                         }
                     }
                 }
